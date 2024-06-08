@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <h2>{% if id %} Edit {% else %} New {% endif %} Perencanaan Implementasi Sistem Cerdas</h2>
+        <div id="content">
+            <div id="table-container">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group mb-0">
+                    {{ form.pelaksanaan_deployment| as_crispy_field }}
+                    {{ form.pemeliharaan_sistem|as_crispy_field }}
+                    {{ form.pelaksanaan_operasi|as_crispy_field }}
+                    </div>
+                    <button id="save" type="submit">Save</button>
+                  </form>
+                  
+            </div>
+        </div>
+</body>
+</html>
+{% endblock %}

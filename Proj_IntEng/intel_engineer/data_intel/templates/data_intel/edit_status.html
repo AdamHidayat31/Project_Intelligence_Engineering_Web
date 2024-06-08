@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <h2>{% if id %} Edit {% else %} New {% endif %} Status Realisasi</h2>
+    <div id="content">
+        <div id="table-container">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group mb-0">
+                    {{ form.status| as_crispy_field }}
+                </div>
+                <button id="save" type="submit">Save</button>
+                </form>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

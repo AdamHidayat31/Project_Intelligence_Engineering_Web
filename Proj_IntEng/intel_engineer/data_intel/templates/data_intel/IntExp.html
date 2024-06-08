@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+        <div id="content">
+            <h2>Intelligence Experience</h2>
+            <div id="table-container">
+                <form method="post">
+                    {% csrf_token %}
+                    <div><p>Presenting Intelligence to User</p></div>
+                    <div class="form-group mb-0">
+                        <div class="form-row">
+                            
+                            <div class="form-group col-md-6 mb-0 ">
+                                {{ form.automate | as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-6 mb-0 ">
+                                {{ form.prompt | as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-0 ">
+                                {{ form.organization | as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-6 mb-0 ">
+                                {{ form.annotate | as_crispy_field }}
+                            </div>
+                        </div>
+                    {{ form.achieve_system| as_crispy_field }}
+                    {{ form.minimize_flaws|as_crispy_field }}
+                    {{ form.data_grown_system|as_crispy_field }}
+                    </div>
+                    <button id="save" type="submit">Save</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

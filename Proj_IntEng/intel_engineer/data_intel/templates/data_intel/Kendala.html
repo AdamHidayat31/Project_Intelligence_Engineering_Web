@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+        <div id="content">
+            <h2>Kendala atau Masalah Pengembangan Sistem</h2>
+            <div id="table-container">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.masalah_pengembangan| as_crispy_field }}
+                    <button id="save" type="submit">Save</button>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

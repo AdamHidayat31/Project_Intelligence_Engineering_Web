@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}        
+<h2> Home</h2>
+<h3>Meaningful Objective</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Organization Objective</th>
+      <th scope="col">Leading Indicator</th>
+      <th scope="col">User Outcomes</th>
+      <th scope="col">Model Properties</th>
+      <th class="action" scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for IE in list_ie %}
+      <tr class = "record">
+        <td ><label >{{IE.organization_objective}}</label></td>
+        <td><label >{{IE.leading_indicator}}</label></td>
+        <td><label >{{IE.user_outcomes}}</label></td>
+        <td><label >{{IE.model_properties}}</label></td>
+        <td>
+          <form method="post" action="#">
+              {% csrf_token %}
+              <a href="{% url 'data_intel:edit_ie' IE.id%}" class="btn btn-outline-success">Update</a>
+              <a href="{% url 'data_intel:delete_ie' IE.id%}" class="btn btn-outline-failed">Delete</a>
+              
+         </form>
+      </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h3> Intelligence Experience</h3>
+<table class="table_int">
+  <thead>
+    <tr class="presenting">Presenting Intelligence to User</tr>
+    <tr>
+      <th class="presen" scope="col">Automate</th>
+      <th class="presen" scope="col">Prompt</th>
+      <th class="presen" scope="col">Organization</th>
+      <th class="presen" scope="col">Annotate</th>
+      <th class="action" scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for IntExp in list_intexp %}
+      <tr class = "record">
+          <td><label >{{IntExp.automate}}</label></td>
+          <td><label >{{IntExp.prompt}}</label></td>
+          <td><label >{{IntExp.organization}}</label></td>
+          <td><label >{{IntExp.annotate}}</label></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<table class="table_int">
+  <thead>
+    <tr>
+      <th scope="col">Achieve System Objective</th>
+      <th scope="col">Minimize Intelligence Flaws</th>
+      <th scope="col">Create Data to Grown Sytem</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    {% for IntExp in list_intexp %}
+      <tr class = "record">
+          <td><label >{{IntExp.achieve_system}}</label></td>
+          <td><label >{{IntExp.minimize_flaws}}</label></td>
+          <td><label >{{IntExp.data_grown_system}}</label></td>
+          <td class="action_ud">
+            <form method="post" action="#">
+                {% csrf_token %}
+                <a href="{% url 'data_intel:edit_intexp' IntExp.id%}" class="btn btn-outline-success">Update</a>
+                <a href="{% url 'data_intel:delete_intexp' IntExp.id%}" class="btn btn-outline-failed">Delete</a>
+                
+            </form>
+          </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h3>Intelligence Implementation</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Proses Bisnis Sistem Cerdas</th>
+      <th scope="col">Teknologi Yang Akan di Pakai</th>
+      <th scope="col">Proses Yang Akan di Bangun Menjadi Cerdas</th>
+      <th class="action" scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for IntImp in list_intimp %}
+      <tr class = "record">
+        <td><label >{{IntImp.proses_bisnis}}</label></td>
+        <td><label >{{IntImp.teknologi_dipakai}}</label></td>
+        <td><label >{{IntImp.sistem_cerdas}}</label></td>
+        <td>
+          <form method="post" action="#">
+              {% csrf_token %}
+              <a href="{% url 'data_intel:edit_intimp' IntImp.id%}" class="btn btn-outline-success">Update</a>
+              <a href="{% url 'data_intel:delete_intimp' IntImp.id%}" class="btn btn-outline-failed">Delete</a>
+              
+         </form>
+      </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h3>Kendala atau Masalah Pengembangan Sistem</h3>
+<table class="table">
+  <tbody class="isi_kiri">
+    {% for Kendala in list_kendala %}
+      <tr class = "record">
+        <td><label >{{Kendala.masalah_pengembangan}}</label></td>
+        <td class="action">
+          <form method="post" action="#">
+              {% csrf_token %}
+              <a href="{% url 'data_intel:edit_kendala' Kendala.id%}" class="btn btn-outline-success">Update</a>
+              <a href="{% url 'data_intel:delete_kendala' Kendala.id%}" class="btn btn-outline-failed">Delete</a>
+              
+         </form>
+      </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<h3>Status Realisasi</h3>
+<table class="table">
+  <tbody class="isi_kiri">
+    {% for Status in list_status %}
+      <tr class = "record">
+        <td><label >{{Status.status}}</label></td>
+        <td class="action">
+          <form method="post" action="#">
+              {% csrf_token %}
+              <a href="{% url 'data_intel:edit_status' Status.id%}" class="btn btn-outline-success">Update</a>
+              <a href="{% url 'data_intel:delete_status' Status.id%}" class="btn btn-outline-failed">Delete</a>
+              
+         </form>
+      </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h3>Perencanaan Implementasi Sistem Cerdas</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Penetapan Pelaksanaan Deployment</th>
+      <th scope="col">Pemeliharaan Sistem Cerdas</th>
+      <th scope="col">Pelaksanaan Pemeliharaan Sistem Cerdas</th>
+      <th class="action" scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for PerImp in list_perimp %}
+      <tr class = "record">
+        <td><label >{{PerImp.pelaksanaan_deployment}}</label></td>
+        <td><label >{{PerImp.pemeliharaan_sistem}}</label></td>
+        <td><label >{{PerImp.pelaksanaan_operasi}}</label></td>
+        <td>
+          <form method="post" action="#">
+              {% csrf_token %}
+              <a href="{% url 'data_intel:edit_perimp' PerImp.id%}" class="btn btn-outline-success">Update</a>
+              <a href="{% url 'data_intel:delete_perimp' PerImp.id%}" class="btn btn-outline-failed">Delete</a>
+              
+         </form>
+      </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Daftar Proyek Get</h2>
+  
+  <form method="post">
+    {% csrf_token %}
+    <div class="json-layout">
+      <pre>
+      [
+      {% for projek in projek_list_info %}
+        {
+          "nama_project": "{{ projek.nama_project }}",
+          "tujuan_project": "{{ projek.tujuan_project }}",
+          "tangmul_project": "{{ projek.tangmul_project }}",
+          "tangsel_project": "{{ projek.tangsel_project }}",
+          "pic_project": "{{ projek.pic_project }}",
+          "status_project": "{{ projek.status_project }}",
+          "biaya": {{ projek.biaya }}
+        }{% if not forloop.last %},{% endif %}
+      {% endfor %}
+      ]
+      </pre>
+    </div>
+  </form>
+  
+{% endblock %}

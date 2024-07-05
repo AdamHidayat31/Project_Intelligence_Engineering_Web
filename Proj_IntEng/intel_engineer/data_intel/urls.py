@@ -27,4 +27,14 @@ urlpatterns =[
     path('perimp',views.set_perimp,name='set_perimp'),
     path('delete_perimp/<int:id>/',views.delete_perimp,name='delete_perimp'),
     path('perimp/edit_perimp/<int:id>/', views.edit_perimp, name='edit_perimp'),
+
+    path('projek_detail/<int:id>/',views.get_projek_detail,name='set_projek_detail'),
+
+    path('api/status/',views.StatusListCreate.as_view(),name='api_status'),
+    path('status-form/', views.status_form_view, name='status-form'),
+    path('api/projek-list/', views.ProjekList.as_view(), name='projek-list'),
+    
+    path('set_projek_session/<int:id>/',views.set_projek_session, name='set_projek_session'),
+
+    path('projects/', views.project_view, name='project_view'),
 ]

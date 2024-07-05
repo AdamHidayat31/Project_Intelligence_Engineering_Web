@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<h2>Home</h2>
+<h3>Projek {{nama_p}}</h3>
+<h3>Meaningful Objective</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Organization Objective</th>
+      <th scope="col">Leading Indicator</th>
+      <th scope="col">User Outcomes</th>
+      <th scope="col">Model Properties</th>
+      <th class="action" scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for ie in list_ie %}
+      <tr class="record">
+        <td><label>{{ ie.organization_objective }}</label></td>
+        <td><label>{{ ie.leading_indicator }}</label></td>
+        <td><label>{{ ie.user_outcomes }}</label></td>
+        <td><label>{{ ie.model_properties }}</label></td>
+        <td>
+          <form method="post" action="#">
+              {% csrf_token %}
+              <a href="{% url 'data_intel:edit_ie' ie.id %}" class="btn btn-outline-success">Update</a>
+              <a href="{% url 'data_intel:delete_ie' ie.id %}" class="btn btn-outline-failed">Delete</a>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h3>Intelligence Experience</h3>
+<table class="table_int">
+  <thead>
+    <tr class="presenting">Presenting Intelligence to User</tr>
+    <tr>
+      <th class="presen" scope="col">Automate</th>
+      <th class="presen" scope="col">Prompt</th>
+      <th class="presen" scope="col">Organization</th>
+      <th class="presen" scope="col">Annotate</th>
+      <th class="action" scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for intexp in list_intexp %}
+      <tr class="record">
+        <td><label>{{ intexp.automate }}</label></td>
+        <td><label>{{ intexp.prompt }}</label></td>
+        <td><label>{{ intexp.organization }}</label></td>
+        <td><label>{{ intexp.annotate }}</label></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<table class="table_int">
+  <thead>
+    <tr>
+      <th scope="col">Achieve System Objective</th>
+      <th scope="col">Minimize Intelligence Flaws</th>
+      <th scope="col">Create Data to Grown System</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for intexp in list_intexp %}
+      <tr class="record">
+        <td><label>{{ intexp.achieve_system }}</label></td>
+        <td><label>{{ intexp.minimize_flaws }}</label></td>
+        <td><label>{{ intexp.data_grown_system }}</label></td>
+        <td class="action_ud">
+          <form method="post" action="#">
+              {% csrf_token %}
+              <a href="{% url 'data_intel:edit_intexp' intexp.id %}" class="btn btn-outline-success">Update</a>
+              <a href="{% url 'data_intel:delete_intexp' intexp.id %}" class="btn btn-outline-failed">Delete</a>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h3>Intelligence Implementation</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Proses Bisnis Sistem Cerdas</th>
+      <th scope="col">Teknologi Yang Akan di Pakai</th>
+      <th scope="col">Proses Yang Akan di Bangun Menjadi Cerdas</th>
+      <th class="action" scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for intimp in list_intimp %}
+      <tr class="record">
+        <td><label>{{ intimp.proses_bisnis }}</label></td>
+        <td><label>{{ intimp.teknologi_dipakai }}</label></td>
+        <td><label>{{ intimp.sistem_cerdas }}</label></td>
+        <td>
+          <form method="post" action="#">
+              {% csrf_token %}
+              <a href="{% url 'data_intel:edit_intimp' intimp.id %}" class="btn btn-outline-success">Update</a>
+              <a href="{% url 'data_intel:delete_intimp' intimp.id %}" class="btn btn-outline-failed">Delete</a>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h3>Kendala atau Masalah Pengembangan Sistem</h3>
+<table class="table">
+  <tbody class="isi_kiri">
+    {% for kendala in list_kendala %}
+      <tr class="record">
+        <td><label>{{ kendala.masalah_pengembangan }}</label></td>
+        <td class="action">
+          <form method="post" action="#">
+              {% csrf_token %}
+              <a href="{% url 'data_intel:edit_kendala' kendala.id %}" class="btn btn-outline-success">Update</a>
+              <a href="{% url 'data_intel:delete_kendala' kendala.id %}" class="btn btn-outline-failed">Delete</a>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h3>Status Realisasi</h3>
+<table class="table">
+  <tbody class="isi_kiri">
+    {% for status in list_status %}
+      <tr class="record">
+        <td><label>{{ status.status }}</label></td>
+        <td class="action">
+          <form method="post" action="#">
+              {% csrf_token %}
+              <a href="{% url 'data_intel:edit_status' status.id %}" class="btn btn-outline-success">Update</a>
+              <a href="{% url 'data_intel:delete_status' status.id %}" class="btn btn-outline-failed">Delete</a>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h3>Perencanaan Implementasi Sistem Cerdas</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Penetapan Pelaksanaan Deployment</th>
+      <th scope="col">Pemeliharaan Sistem Cerdas</th>
+      <th scope="col">Pelaksanaan Pemeliharaan Sistem Cerdas</th>
+      <th class="action" scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for perimp in list_perimp %}
+      <tr class="record">
+        <td><label>{{ perimp.pelaksanaan_deployment }}</label></td>
+        <td><label>{{ perimp.pemeliharaan_sistem }}</label></td>
+        <td><label>{{ perimp.pelaksanaan_operasi }}</label></td>
+        <td>
+          <form method="post" action="#">
+              {% csrf_token %}
+              <a href="{% url 'data_intel:edit_perimp' perimp.id %}" class="btn btn-outline-success">Update</a>
+              <a href="{% url 'data_intel:delete_perimp' perimp.id %}" class="btn btn-outline-failed">Delete</a>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

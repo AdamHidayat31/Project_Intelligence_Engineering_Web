@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Status</title>
+</head>
+<body>
+    <h1>Submit Status</h1>
+    <form id="statusForm">
+        <label for="projek">Projek:</label>
+        <select id="projek" name="projek" required>
+            <option value="" disabled selected>------</option>
+            {% for projek in projek_list %}
+                <option value="{{ projek.id }}">{{ projek.nama_proyek }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="status">Status:</label>
+        <textarea id="status" name="status" required></textarea>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('statusForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const projek = document.getElementById('projek').value;
+            const status = document.getElementById('status').value;
+
+            fetch('/api/status/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ projek: projek, status: status }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                alert('Status created successfully!');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>

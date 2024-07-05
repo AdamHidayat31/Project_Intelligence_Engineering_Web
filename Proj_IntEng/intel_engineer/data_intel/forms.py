@@ -1,5 +1,5 @@
 from django import forms
-from .models import IE, IntExp, IntImp, Kendala, Status, PerImp
+from .models import *
 
 STATUS = (
     ('', 'Choose...'),
@@ -10,10 +10,10 @@ STATUS = (
 
 class IEForm(forms.ModelForm):
     status_penyelesaian =forms.ChoiceField(choices=STATUS)
-
     class Meta:
         model = IE
-        fields = '__all__'
+        # exclude={'projek'}
+        fields = {'organization_objective','leading_indicator','user_outcomes','model_properties','tanggal_mulai','tanggal_selesai','status_penyelesaian'}
         labels = {
             'organization_objective': 'Organization Objective',
             'leading_indicator':'Leading Indicator',
@@ -35,7 +35,7 @@ class IEForm(forms.ModelForm):
 class IntExpForm(forms.ModelForm):
     class Meta:
         model = IntExp
-        fields = '__all__'
+        fields = {'automate','prompt','organization','annotate','achieve_system','minimize_flaws','data_grown_system'}
         labels = {
             'achieve_system':'Achieve System Objective',
             'minimize_flaws':'Minimize Intelligence Flaws',
@@ -54,7 +54,7 @@ class IntExpForm(forms.ModelForm):
 class IntImpForm(forms.ModelForm):
     class Meta:
         model = IntImp
-        fields = '__all__'
+        fields = {'proses_bisnis','teknologi_dipakai','sistem_cerdas'}
         labels = {
             'proses_bisnis':'Proses Bisnis Sistem Cerdas',
             'teknologi_dipakai':'Teknologi Yang Akan di Pakai',
@@ -69,7 +69,7 @@ class IntImpForm(forms.ModelForm):
 class KendalaForm(forms.ModelForm):
     class Meta:
         model = Kendala
-        fields = '__all__'
+        fields = {'masalah_pengembangan'}
         labels = {
             'masalah_pengembangan': 'Kendala atau Masalah Pengembangan Sistem',
         }
@@ -81,7 +81,7 @@ class KendalaForm(forms.ModelForm):
 class StatusForm(forms.ModelForm):
     class Meta:
         model = Status
-        fields = '__all__'
+        fields = ['status']
         labels = {
             'status':'Status Realisasi'
         }
@@ -93,7 +93,7 @@ class StatusForm(forms.ModelForm):
 class PerImpForm(forms.ModelForm):
     class Meta:
         model = PerImp
-        fields = '__all__'
+        fields = {'pelaksanaan_deployment','pemeliharaan_sistem','pelaksanaan_operasi'}
         labels = {
             'pelaksanaan_deployment':'Penetapan Pelaksanaan Deployment',
             'pemeliharaan_sistem':'Pemeliharaan Sistem Cerdas',
@@ -103,4 +103,15 @@ class PerImpForm(forms.ModelForm):
             'pelaksanaan_deployment': forms.Textarea(attrs={'style': 'width:100% ; height:80px '}),
             'pemeliharaan_sistem': forms.Textarea(attrs={'style': 'width:100% ; height:80px '}),
             'pelaksanaan_operasi': forms.Textarea(attrs={'style': 'width:100% ; height:80px '}),
+        }
+
+class DataProjekForm(forms.ModelForm):
+    class Meta:
+        model = DataProjek
+        fields = ['nama_proyek']
+        labels = {
+            'nama_proyek': 'Nama Projek',
+        }
+        widgets={
+            'organization_objective': forms.Textarea(attrs={'style': 'width:100% ; height:80px '}),
         }

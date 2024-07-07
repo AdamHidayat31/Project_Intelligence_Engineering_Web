@@ -1,13 +1,4 @@
-Buat terlebih dahulu virtual environtment django
-
-"python -m virtualenv manpro_env"
-
-lalu activate
-
-"manpro_env\Scripts\activate"
-
-
-pergi ke direktori intel_engineer lalu download django admin, cripsy form, cripsy bootstrap
+Sebelum menggunakan menjalankan sebaiknya download terlebih dahulu library berikut:
 
 "python -m pip install django"
 
@@ -15,7 +6,12 @@ pergi ke direktori intel_engineer lalu download django admin, cripsy form, crips
 
 "pip install crispy-bootstrap4"
 
+"pip install django-cors-headers"
 
-jalankan server
+"pip install djangorestframework"
 
-"python manage.py runserver"
+"pip intsall mysqlclient"
+
+"pip install pillow"
+
+"pip install requests"

@@ -30,9 +30,11 @@
    pip install -r requirements.txt
 3. Migrasi database:
    Jalankan perintah berikut di dalam folder 'Proj_IntEng/intel_engineer/'
-   ```bash
+   ```
    python manage.py makemigrations
    python manage.py migrate
+   ```
+   Lihatlah pada 'settings.py' database disimpan dalam MySql atau db.sqlite sesuaikan terlebih dahulu
 4. Jalankan server:
    ```bash
    python manage.py runserver
@@ -55,20 +57,3 @@
 ## 👥 Kontributor
 - Adam Hidayat - Developer Utama
 
-Sebelum menggunakan menjalankan sebaiknya download terlebih dahulu library berikut:
-
-"python -m pip install django"
-
-"pip install django-crispy-forms"
-
-"pip install crispy-bootstrap4"
-
-"pip install django-cors-headers"
-
-"pip install djangorestframework"
-
-"pip intsall mysqlclient"
-
-"pip install pillow"
-
-"pip install requests"

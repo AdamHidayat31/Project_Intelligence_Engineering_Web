@@ -40,7 +40,7 @@
    ```bash
    python manage.py createsuperuser
 ## 🖼️ Tampilan Aplikasi
-
+![Contoh Gambar](home.png)
 ## 📁 Struktur Proyek
   ```
   Proj_IntEng/

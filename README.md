@@ -15,7 +15,7 @@
 - Python 3
 - Django 4
 - HTML5 + CSS3 + Bootstrap
-- SQLite (bisa disesuaikan ke PostgreSQL)
+- SQLite (bisa disesuaikan ke MySql)
 
 ## 🚀 Instalasi
 
